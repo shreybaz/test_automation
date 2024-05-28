@@ -8,7 +8,7 @@ on:
     types: [call]
     
 jobs:
-  test:
+  run-on-dispatch:
     timeout-minutes: 60
     runs-on: ubuntu-latest
     steps:
