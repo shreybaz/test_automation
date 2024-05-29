@@ -31,8 +31,8 @@ jobs:
 
     - name: Repository Dispatch
       run: |
-        curl -X POST https://api.github.com/repos/shreybaz/hot-or-not-web-leptos-ssr/dispatches \
+        curl -X POST https://api.github.com/repos/shreybaz/hot-or-not-web-leptos-ssr-e2e-test/dispatches \
         -H 'Accept: application/vnd.github+json' \
-        -H 'Authorization: token ${{ secrets.TOKEN_FINE_G_LEPTOS_SSR }}' \
+        -H 'Authorization: token ${{ secrets.TOKEN_FINE_G_TESTS }}' \
         -d '{"event_type": "call"}'
           
