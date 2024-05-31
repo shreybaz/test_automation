@@ -46,15 +46,15 @@ jobs:
         -H 'Authorization: token ${{ secrets.TEST_TRIGGER_IN_PAT_ORG }}' \
         -d '{"event_type": "call"}'
 
-# using action/script@v6
-    - name: Trigger Workflow
-      uses: actions/github-script@v6
-      with:
-        github-token: ${{ secrets.TEST_TRIGGER_IN_PAT_ORG }}
-        script: |
-          github.rest.repos.createDispatchEvent({
-            owner: 'PAT-ORG',
-            repo: 'hot-or-not-web-leptos-ssr-e2e-test',
-            event_type: 'call'
-          })
+# # using action/script@v6
+#     - name: Trigger Workflow
+#       uses: actions/github-script@v6
+#       with:
+#         github-token: ${{ secrets.TEST_TRIGGER_IN_PAT_ORG }}
+#         script: |
+#           github.rest.repos.createDispatchEvent({
+#             owner: 'PAT-ORG',
+#             repo: 'hot-or-not-web-leptos-ssr-e2e-test',
+#             event_type: 'call'
+#           })
 
