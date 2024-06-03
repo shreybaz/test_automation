@@ -38,7 +38,7 @@ jobs:
 
 
 #IN TEST1
-      # with actions read only, workflow and code read and write
+      # with workflow and code read and write
     - name: Repository Dispatch
       run: |
         curl -X POST https://api.github.com/repos/PAT-ORG/test1/dispatches \
