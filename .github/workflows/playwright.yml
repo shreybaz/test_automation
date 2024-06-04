@@ -38,13 +38,14 @@ jobs:
 
 
 # #IN TEST1
-#       # with code read and write
-#     - name: Repository Dispatch
-#       run: |
-#         curl -X POST https://api.github.com/repos/PAT-ORG/test1/dispatches \
-#         -H 'Accept: application/vnd.github+json' \
-#         -H 'Authorization: token ${{ secrets.TEST_TRIGGER_IN_PAT_ORG }}' \
-#         -d '{"event_type": "call"}'
+      # with code read and write
+    - name: Repository Dispatch
+      run: |
+        curl -X POST https://api.github.com/repos/PAT-ORG/test1/dispatches \
+        -H 'Accept: application/vnd.github+json' \
+        -H 'Authorization: token ${{ secrets.TEST_TRIGGER_IN_PAT_ORG }}' \
+        -d '{"event_type": "call"}'
+        
     - name: Trigger dispatch
       env:
         GH_TOKEN: ${{ secrets.TOKEN_FOR_E2E_TESTS }}
