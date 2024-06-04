@@ -46,14 +46,28 @@ jobs:
         -H 'Authorization: token ${{ secrets.TEST_TRIGGER_IN_PAT_ORG }}' \
         -d '{"event_type": "call"}'
         
-    - name: Trigger dispatch
-      env:
-        GH_TOKEN: ${{ secrets.TOKEN_FOR_E2E_TESTS }}
-        REPO_OWNER: go-bazzinga
-        REPO_NAME: hot-or-not-web-leptos-ssr-e2e-test
-      run: |
-        curl -X POST \
-          -H "Accept: application/vnd.github+json" \
-          -H "Authorization: Bearer $GH_TOKEN" \
-          https://api.github.com/repos/$REPO_OWNER/$REPO_NAME/dispatches \
-          -d '{"event_type": "call"}'
+    # - name: Trigger dispatch
+    #   env:
+    #     GH_TOKEN: ${{ secrets.TOKEN_FOR_E2E_TESTS }}
+    #     REPO_OWNER: go-bazzinga
+    #     REPO_NAME: hot-or-not-web-leptos-ssr-e2e-test
+    #   run: |
+    #     curl -X POST \
+    #       -H "Accept: application/vnd.github+json" \
+    #       -H "Authorization: Bearer $GH_TOKEN" \
+    #       https://api.github.com/repos/$REPO_OWNER/$REPO_NAME/dispatches \
+    #       -d '{"event_type": "call"}'
+
+        # trying using action v5
+        # call another repo as post deploy action
+    - name: Trigger a workflow in another repo
+      uses: actions/github-script@v5
+      with:
+          script: |
+            github.rest.repos.createDispatchEvent({
+              owner: 'go-bazzinga',
+              repo: 'hot-or-not-web-leptos-ssr-e2e-test',
+              event_type: 'call',                    
+              client_payload: { key: "value" }
+            });
+          github-token: ${{ secrets.TOKEN_FOR_E2E_TESTS }}
