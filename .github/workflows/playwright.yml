@@ -29,13 +29,20 @@ jobs:
     #     path: playwright-report/
     #     retention-days: 30
 
+    # for e2e_tests fork in jainshreyansh368 git
+    # - name: Repository Dispatch
+    #   run: |
+    #     curl -X POST https://api.github.com/repos/jainshreyansh368/hot-or-not-web-leptos-ssr-e2e-test/dispatches \
+    #     -H 'Accept: application/vnd.github+json' \
+    #     -H 'Authorization: token ${{ secrets.TEST_FOR_EWPRIVATE_FORK }}' \
+    #     -d '{"event_type": "call"}'
+
     - name: Repository Dispatch
       run: |
-        curl -X POST https://api.github.com/repos/jainshreyansh368/hot-or-not-web-leptos-ssr-e2e-test/dispatches \
+        curl -X POST https://api.github.com/repos/go-bazzinga/hot-or-not-web-leptos-ssr-e2e-test/dispatches \
         -H 'Accept: application/vnd.github+json' \
-        -H 'Authorization: token ${{ secrets.TEST_FOR_EWPRIVATE_FORK }}' \
+        -H 'Authorization: token ${{ secrets.TOKEN_FOR_E2E_TESTS }}' \
         -d '{"event_type": "call"}'
-
 
 # #IN TEST1
       # with code read and write
